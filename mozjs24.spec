@@ -18,6 +18,8 @@ BuildRequires:	python-devel
 
 Patch0:		js17-build-fixes.patch
 Patch1:		mozjs24-0001-Add-AArch64-support.patch
+Patch2:		spidermonkey-24.2.0-fix-file-permissions.patch
+Patch3:		spidermonkey-24-upward-growing-stack.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -50,18 +52,20 @@ you will need to install %{name}-devel.
 # Delete bundled sources
 rm js/src/editline -rf
 rm js/src/ctypes/libffi -rf
-%patch0 -p1
-%patch1 -p1
+%apply_patches
 chmod a+x configure
 
 %build
 %configure \
   --disable-static \
   --with-system-nspr \
+  --enable-system-ffi \
+  --enable-jemalloc \
   --enable-threadsafe \
   --enable-readline \
   --enable-xterm-updates
-make %{?_smp_mflags}
+
+%make
 
 %install
 make install DESTDIR=%{buildroot}
