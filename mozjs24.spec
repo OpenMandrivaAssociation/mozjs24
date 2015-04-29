@@ -56,12 +56,11 @@ rm js/src/ctypes/libffi -rf
 %apply_patches
 chmod a+x configure
 
+%build
 %ifarch %arm
 export CC=gcc
 export CXX=g++
 %endif
-
-%build
 %configure \
   --with-system-nspr \
   --enable-system-ffi \
