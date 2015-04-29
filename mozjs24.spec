@@ -6,7 +6,7 @@
 Summary:	JavaScript interpreter and libraries
 Name:		mozjs24
 Version:	24.2.0
-Release:	1%{?dist}
+Release:	2
 License:	MPLv2.0
 
 URL:		http://www.mozilla.org/js/
@@ -15,7 +15,7 @@ BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(libffi)
 BuildRequires:	readline-devel
 BuildRequires:	zip
-BuildRequires:	python-devel
+BuildRequires:	pkgconfig(python2)
 
 Patch0:		js17-build-fixes.patch
 Patch1:		mozjs24-0001-Add-AArch64-support.patch
@@ -56,9 +56,13 @@ rm js/src/ctypes/libffi -rf
 %apply_patches
 chmod a+x configure
 
+%ifarch %arm
+export CC=gcc
+export CXX=g++
+%endif
+
 %build
 %configure \
-  --disable-static \
   --with-system-nspr \
   --enable-system-ffi \
   --enable-jemalloc \
@@ -69,7 +73,7 @@ chmod a+x configure
 %make
 
 %install
-make install DESTDIR=%{buildroot}
+%makeinstall_std
 # For some reason the headers and pkg-config file are executable
 find %{buildroot}%{_includedir} -type f -exec chmod a-x {} \;
 chmod a-x  %{buildroot}%{_libdir}/pkgconfig/*.pc
