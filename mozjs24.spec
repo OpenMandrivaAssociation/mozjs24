@@ -6,7 +6,7 @@
 Summary:	JavaScript interpreter and libraries
 Name:		mozjs24
 Version:	24.2.0
-Release:	2
+Release:	3
 License:	MPLv2.0
 
 URL:		http://www.mozilla.org/js/
