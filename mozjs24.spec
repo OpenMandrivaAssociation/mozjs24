@@ -1,16 +1,16 @@
-%define pkgname	mozjs
-%define api			24.2
-%define libmozjs24		%mklibname %{pkgname} %{api}
-%define libmozjs24_devel	%mklibname %{pkgname} %{api} -d
+%define pkgname mozjs
+%define api 24.2
+%define libmozjs24 %mklibname %{pkgname} %{api}
+%define libmozjs24_devel %mklibname %{pkgname} %{api} -d
 
 Summary:	JavaScript interpreter and libraries
 Name:		mozjs24
 Version:	24.2.0
-Release:	3
+Release:	4
 License:	MPLv2.0
 
 URL:		http://www.mozilla.org/js/
-Source0:	http://ftp.mozilla.org/pub/mozilla.org/js/mozjs-%{version}.tar.bz2
+Source0:	https://ftp.mozilla.org/pub/js/mozjs-%{version}.tar.bz2
 BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(libffi)
 BuildRequires:	readline-devel
@@ -41,7 +41,7 @@ with only mild differences from the published standard.
 %package -n %{libmozjs24_devel}
 Summary: Header files, libraries and development documentation for %{name}
 Provides:	mozjs24-devel = %{EVRD}
-Requires: %{libmozjs24} = %{EVRD}
+Requires:	%{libmozjs24} = %{EVRD}
 
 %description -n %{libmozjs24_devel}
 This package contains the header files, static libraries and development
@@ -87,9 +87,9 @@ rm -f %{buildroot}%{_bindir}/js24
 rm -f %{buildroot}%{_bindir}/js24-config
 
 %files -n %{libmozjs24}
-%doc LICENSE README
 %{_libdir}/*.so
 
 %files -n %{libmozjs24_devel}
+%doc LICENSE README
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/mozjs-24
