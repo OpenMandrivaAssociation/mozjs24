@@ -21,6 +21,7 @@ Patch0:		js17-build-fixes.patch
 Patch1:		mozjs24-0001-Add-AArch64-support.patch
 Patch2:		spidermonkey-24.2.0-fix-file-permissions.patch
 Patch3:		spidermonkey-24-upward-growing-stack.patch
+Patch4:		patch-bug1012971.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions

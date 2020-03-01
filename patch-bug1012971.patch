@@ -1,0 +1,13 @@
+diff --git a/js/src/jsopcode.cpp b/js/src/jsopcode.cpp
+index facb4cf..e515bd0 100644
+--- a/js/src/jsopcode.cpp
++++ b/js/src/jsopcode.cpp
+@@ -1391,7 +1391,7 @@ ExpressionDecompiler::write(JSString *str)
+ bool
+ ExpressionDecompiler::quote(JSString *s, uint32_t quote)
+ {
+-    return QuoteString(&sprinter, s, quote) >= 0;
++    return QuoteString(&sprinter, s, quote) != NULL;
+ }
+ 
+ JSAtom *
