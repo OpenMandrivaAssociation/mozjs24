@@ -1,0 +1,31 @@
+From 22ddd3bb42c4b8fb43f7c7263acf86900ea97b2c Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Sat, 16 Sep 2017 15:20:17 +0200
+Subject: [PATCH] =?UTF-8?q?js:=20null=20pointer=20jav=C3=ADt=C3=A1s?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ js/patches/spidermonkey-24-pointer-null.patch | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+ create mode 100644 js/patches/spidermonkey-24-pointer-null.patch
+
+diff --git a/js/patches/spidermonkey-24-pointer-null.patch b/js/patches/spidermonkey-24-pointer-null.patch
+new file mode 100644
+index 000000000..e3c886590
+--- /dev/null
++++ b/js/patches/spidermonkey-24-pointer-null.patch
+@@ -0,0 +1,12 @@
++diff -Naur orig/js/src/shell/jsoptparse.cpp patched/js/src/shell/jsoptparse.cpp
++--- orig/js/src/shell/jsoptparse.cpp	2013-10-29 21:40:20.134739579 +0100
+++++ patched/js/src/shell/jsoptparse.cpp	2017-09-16 15:03:25.124774106 +0200
++@@ -253,7 +253,7 @@
++     char *eq = strchr(argv[*i], '=');
++     if (eq) {
++         *value = eq + 1;
++-        if (value[0] == '\0')
+++        if (value[0] == NULL)
++             return error("A value is required for option %.*s", eq - argv[*i], argv[*i]);
++         return Okay;
++     }
