@@ -53,7 +53,7 @@ you will need to install %{name}-devel.
 # Delete bundled sources
 rm js/src/editline -rf
 rm js/src/ctypes/libffi -rf
-%apply_patches
+%autopatch -p1
 chmod a+x configure
 
 %build
