@@ -22,7 +22,7 @@ Patch1:		mozjs24-0001-Add-AArch64-support.patch
 Patch2:		spidermonkey-24.2.0-fix-file-permissions.patch
 Patch3:		spidermonkey-24-upward-growing-stack.patch
 Patch4:		patch-bug1012971.patch
-Patch5:		22ddd3bb42c4b8fb43f7c7263acf86900ea97b2c.patch
+Patch5:		spidermonkey-24-pointer-null.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
