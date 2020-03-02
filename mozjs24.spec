@@ -23,6 +23,7 @@ Patch2:		spidermonkey-24.2.0-fix-file-permissions.patch
 Patch3:		spidermonkey-24-upward-growing-stack.patch
 Patch4:		patch-bug1012971.patch
 Patch5:		spidermonkey-24-pointer-null.patch
+Patch6:		modern-perl.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
@@ -63,6 +64,7 @@ chmod a+x configure
 export CC=gcc
 export CXX=g++
 %endif
+export LIBRARY_NAME="%{name}-24"
 %configure \
   --with-system-nspr \
   --enable-system-ffi \
@@ -74,7 +76,7 @@ export CXX=g++
 %make
 
 %install
-%makeinstall_std
+%make_install
 # For some reason the headers and pkg-config file are executable
 find %{buildroot}%{_includedir} -type f -exec chmod a-x {} \;
 chmod a-x  %{buildroot}%{_libdir}/pkgconfig/*.pc
