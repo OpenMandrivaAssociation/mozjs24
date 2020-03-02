@@ -1,6 +1,3 @@
-diff --git a/js/src/config/.milestone.pl.un~ b/js/src/config/.milestone.pl.un~
-index 11711a0..e213ad8 100644
-Binary files a/js/src/config/.milestone.pl.un~ and b/js/src/config/.milestone.pl.un~ differ
 diff --git a/js/src/config/milestone.pl b/js/src/config/milestone.pl
 index aedfddf..9aad212 100644
 --- a/js/src/config/milestone.pl
