@@ -1,0 +1,39 @@
+diff --git a/mfbt/double-conversion/utils.h b/mfbt/double-conversion/utils.h
+index fe26dab..19049f1 100644
+--- a/mfbt/double-conversion/utils.h
++++ b/mfbt/double-conversion/utils.h
+@@ -59,6 +59,7 @@
+     defined(__sparc__) || defined(__sparc) || defined(__s390__) || \
+     defined(__SH4__) || defined(__alpha__) || \
+     defined(__aarch64__) || \
++    defined(__riscv) || \
+     defined(_MIPS_ARCH_MIPS32R2)
+ #define DOUBLE_CONVERSION_CORRECT_DOUBLE_OPERATIONS 1
+ #elif defined(_M_IX86) || defined(__i386__) || defined(__i386)
+diff --git a/mfbt/tests/TestPoisonArea.cpp b/mfbt/tests/TestPoisonArea.cpp
+index cf2417a..4df66df 100644
+--- a/mfbt/tests/TestPoisonArea.cpp
++++ b/mfbt/tests/TestPoisonArea.cpp
+@@ -168,6 +168,22 @@ typedef unsigned int uint32_t;
+ #elif defined __s390__
+ #define RETURN_INSTR 0x07fe0000 /* br %r14 */
+ 
++#elif defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64
++#if defined(__riscv_compressed)
++#define RETURN_INSTR 0x8082 /* ret */
++#define RETURN_INSTR_TYPE uint16_t
++#else
++#define RETURN_INSTR 0x00008067 /* ret */
++#endif
++
++#elif defined(__riscv) && defined(__riscv_xlen) && __riscv_xlen == 64
++#if defined(__riscv_compressed)
++#define RETURN_INSTR 0x8082 /* ret */
++#define RETURN_INSTR_TYPE uint16_t
++#else
++#define RETURN_INSTR 0x00008067 /* ret */
++#endif
++
+ #elif defined __ia64
+ struct ia64_instr { uint32_t i[4]; };
+ static const ia64_instr _return_instr =

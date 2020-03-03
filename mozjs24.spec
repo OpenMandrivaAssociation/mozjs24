@@ -24,6 +24,7 @@ Patch3:		spidermonkey-24-upward-growing-stack.patch
 Patch4:		patch-bug1012971.patch
 Patch5:		spidermonkey-24-pointer-null.patch
 Patch6:		modern-perl.patch
+Patch7:		firefox-52.7.2esr-add-riscv64.patch
 
 %description
 JavaScript is the Netscape-developed object scripting language used in millions
