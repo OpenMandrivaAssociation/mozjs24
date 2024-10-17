@@ -9,7 +9,7 @@ Version:	24.2.0
 Release:	6
 License:	MPLv2.0
 
-URL:		http://www.mozilla.org/js/
+URL:		https://www.mozilla.org/js/
 Source0:	https://ftp.mozilla.org/pub/js/mozjs-%{version}.tar.bz2
 BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(libffi)
