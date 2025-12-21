@@ -11,6 +11,11 @@ License:	MPLv2.0
 
 URL:		https://www.mozilla.org/js/
 Source0:	https://ftp.mozilla.org/pub/js/mozjs-%{version}.tar.bz2
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(nspr)
 BuildRequires:	pkgconfig(libffi)
 BuildRequires:	readline-devel
